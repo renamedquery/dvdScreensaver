@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang = 'en'>
+    <head>
+        <title>DVD screensaver</title>
+        <meta charset = 'utf-8'/>
+        <!--set favicon as dvd-->
+    </head>
+    <body style = 'background-color:white;overflow:hidden;width:100vw;height:100vh;'>
+        <img src = './dvdScreensaverIcon.png' style = 'width:10%;height:auto;background:transparent;position:absolute;' id = 'icon1'/>
+        <script>
+            icon = document.getElementById('icon1');
+            var moveIntervalX = 3;
+            var moveIntervalY = 2;
+            var directionX = '+';
+            var directionY = '+';
+            var cornerHits = 0;
+            function advance() {
+                if (icon.x + icon.clientWidth > document.body.clientWidth) {directionX = '-';}
+                if (icon.x < 0) {directionX = '+';}
+                if (icon.y + icon.clientHeight > document.body.clientHeight) {directionY = '-';}
+                if (icon.y < 0) {directionY = '+';}
+                if (directionX == '+') {icon.style.left = ((icon.x + moveIntervalX) + 'px');} else if (directionX == '-') {icon.style.left = ((icon.x - moveIntervalX) + 'px');}
+                if (directionY == '-') {icon.style.top = ((icon.y - moveIntervalY) + 'px');} else if (directionY == '+') {icon.style.top = ((icon.y + moveIntervalY) + 'px');}
+                window.requestAnimationFrame(advance);
+            }
+            window.requestAnimationFrame(advance);
+            //implement corner hit tracker method
+        </script>
+    </body>
+</html>
